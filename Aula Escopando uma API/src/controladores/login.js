@@ -34,10 +34,10 @@ const login = async (req, res) => {
         return res.json({
             usuario: dadosUsuario,
             token
-        })
+        }).send()
 
     } catch (error) {
-
+        return res.status(500).json({ mensagem: "Erro interno do servidor" })
     }
 }
 

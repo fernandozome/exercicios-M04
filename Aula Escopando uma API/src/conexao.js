@@ -4,7 +4,7 @@ const knex = require('knex')({
         host: 'localhost',
         user: 'postgres',
         password: '12345',
-        database: 'mini-insta'
+        database: 'mini_insta'
     }
 });
 

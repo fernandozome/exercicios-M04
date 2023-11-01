@@ -1,1 +1,1 @@
-"umaSenhaSegura"
+module.exports = "umaSenhaSegura"

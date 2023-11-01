@@ -37,7 +37,7 @@ const cadastrarUsuario = async (req, res) => {
 }
 
 const obterPerfil = async (req, res) => {
-    return res.json(req.usuario)
+    return res.status(200).json(req.usuario)
 }
 
 const editarPerfil = async (req, res) => {
@@ -79,14 +79,14 @@ const editarPerfil = async (req, res) => {
             senha = await bcrypt.hash(senha, 10)
         }
 
-        if (email !== req.usuario.email) {
+        if (email != req.usuario.email) {
             const emailUsuarioExiste = await knex('usuarios').where({ email }).first()
             if (emailUsuarioExiste) {
                 return res.status(400).json({ mensagem: "Email informado já existe" })
             }
         }
 
-        if (username !== req.usuario.username) {
+        if (username != req.usuario.username) {
             const usernameUsuarioExiste = await knex('usuarios').where({ username }).first()
             if (usernameUsuarioExiste) {
                 return res.status(400).json({ mensagem: "Username informado já existe" })
@@ -109,7 +109,7 @@ const editarPerfil = async (req, res) => {
             return res.status(403).json({ mensagem: "Usuário não pôde ser atualizado" })
         }
 
-        return res.status(200).send()
+        return res.status(200).json({ mensagem: "Usuário atualizado com sucesso" })
 
     } catch (error) {
         return res.status(500).json(error.message)

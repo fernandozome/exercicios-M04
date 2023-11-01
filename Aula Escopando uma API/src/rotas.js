@@ -8,6 +8,7 @@ const {
 
 const verificaLogin = require('../src/filtros/verificaLogin')
 const login = require('../src/controladores/login')
+const { novaPostagem, curtirPostagem, comentarPostagem } = require('./controladores/postagens')
 
 
 
@@ -19,4 +20,7 @@ rotas.use(verificaLogin)
 rotas.get('/perfil', obterPerfil)
 rotas.put('/perfil', editarPerfil)
 
+rotas.post('/postagens', novaPostagem)
+rotas.post('/postagens/:postagemId/curtir', curtirPostagem)
+rotas.post('/postagens/:postagemId/comentar', comentarPostagem)
 module.exports = rotas
